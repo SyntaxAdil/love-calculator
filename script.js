@@ -9,14 +9,19 @@ document.getElementById("btn").addEventListener("click", function () {
     // Validation check
     if (menName === "" || womenName === "") {
         alert("Both names are required to calculate love percentage!");
-        
+        return;
     }
-  
 
+    // Reset previous result (so that it doesn't stack or overlap)
+    display.innerHTML = "";
+
+    // Generate random love percentage
     const lovePercentage = Math.ceil(Math.random() * 100);
 
-    document.getElementById("love_display").innerHTML = `${menName} 
-    ❤️ 
-    ${womenName}:
-    ${lovePercentage}%`;
+    // Show result
+    display.innerHTML = `${menName} ❤️ ${womenName}: ${lovePercentage}%`;
+
+    // Optional: Reset input fields
+    menInput.value = "";
+    womenInput.value = "";
 });
